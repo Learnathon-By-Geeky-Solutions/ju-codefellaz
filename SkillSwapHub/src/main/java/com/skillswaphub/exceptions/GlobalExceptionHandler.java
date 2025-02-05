@@ -9,6 +9,8 @@ import io.jsonwebtoken.security.SignatureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authorization.AuthorizationDeniedException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,7 +30,7 @@ public class GlobalExceptionHandler{
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler({BadCredentialsException.class, MalformedJwtException.class, SignatureException.class, ExpiredJwtException.class
+    @ExceptionHandler({UsernameNotFoundException.class, BadCredentialsException.class, MalformedJwtException.class, SignatureException.class, ExpiredJwtException.class
     , UnsupportedJwtException.class})
     public ResponseEntity<ErrorMessage> handleBadCredentialsException(final Exception exception) {
         ErrorMessage message = new ErrorMessage(HttpStatus.UNAUTHORIZED, exception.getMessage());
@@ -50,6 +52,12 @@ public class GlobalExceptionHandler{
             errors.put(fieldName, errorMessage);
         });
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AuthorizationDeniedException.class)
+    public ResponseEntity<ErrorMessage> handleAuthorizationDeniedException(AuthorizationDeniedException exception){
+        ErrorMessage message= new ErrorMessage(HttpStatus.FORBIDDEN, exception.getMessage());
+        return new ResponseEntity<>(message, HttpStatus.FORBIDDEN);
     }
 
 

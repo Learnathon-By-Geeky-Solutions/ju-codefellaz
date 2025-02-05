@@ -5,7 +5,6 @@ import com.skillswaphub.entity.User;
 import com.skillswaphub.repository.UserRepository;
 import com.skillswaphub.security.JwtService;
 import com.skillswaphub.service.UserService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,10 +19,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final ModelMapper modelMapper;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public User getUserByEmail(String email) {
@@ -39,11 +38,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(@Valid User user) {
+    public void saveUser(User user) {
         if(userRepository.existsByEmail(user.getEmail())) {
             throw new IllegalArgumentException("Email is already in use");
         }
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
