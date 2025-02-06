@@ -1,6 +1,6 @@
 package com.skillswaphub.security;
 
-import com.skillswaphub.entity.User;
+import com.skillswaphub.domain.entity.User;
 import com.skillswaphub.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

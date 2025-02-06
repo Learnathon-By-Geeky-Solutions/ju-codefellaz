@@ -1,6 +1,6 @@
 package com.skillswaphub.security;
 
-import com.skillswaphub.entity.User;
+import com.skillswaphub.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
