@@ -1,6 +1,6 @@
 package com.skillswaphub.security;
 
-import com.skillswaphub.entity.User;
+import com.skillswaphub.domain.request.LoginRequest;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -19,7 +19,7 @@ public class JwtService {
     @Value("${JWT_SECRET_KEY}")
     private String secretKey;
 
-    public String generateToken(User user) {
+    public String generateToken(LoginRequest user) {
         return Jwts.builder()
                 .subject(user.getEmail())
                 .issuedAt(new Date())

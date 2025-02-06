@@ -1,7 +1,9 @@
 package com.skillswaphub.exceptions;
 
-import com.skillswaphub.exceptions.custom.ErrorMessage;
-import com.skillswaphub.exceptions.custom.ResourceNotFoundException;
+import com.skillswaphub.domain.common.ApiResponse;
+import com.skillswaphub.domain.enums.ResponseMessage;
+import com.skillswaphub.exceptions.custom.*;
+import com.skillswaphub.utils.ResponseUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
@@ -11,54 +13,76 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @RestControllerAdvice
 @ResponseStatus
-public class GlobalExceptionHandler{
+public class GlobalExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorMessage> handleGlobalException(final Exception exception) {
-        final ErrorMessage errorMessage = new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage());
-        return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler({Exception.class, EmailSendingException.class})
+    public ResponseEntity<ApiResponse<String>> handleGlobalException() {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ResponseUtils.createErrorResponse(ResponseMessage.INTERNAL_SERVICE_EXCEPTION));
     }
 
-    @ExceptionHandler({UsernameNotFoundException.class, BadCredentialsException.class, MalformedJwtException.class, SignatureException.class, ExpiredJwtException.class
-    , UnsupportedJwtException.class})
-    public ResponseEntity<ErrorMessage> handleBadCredentialsException(final Exception exception) {
-        ErrorMessage message = new ErrorMessage(HttpStatus.UNAUTHORIZED, exception.getMessage());
-        return new ResponseEntity<>(message, HttpStatus.UNAUTHORIZED);
+    @ExceptionHandler({UsernameNotFoundException.class, BadCredentialsException.class})
+    public ResponseEntity<ApiResponse<String>> handleAuthenticationFailureException() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ResponseUtils.createErrorResponse(ResponseMessage.AUTHENTICATION_FAILED));
+    }
+
+    @ExceptionHandler({
+            MalformedJwtException.class,
+            SignatureException.class,
+            ExpiredJwtException.class,
+            UnsupportedJwtException.class
+    })
+    public ResponseEntity<ApiResponse<String>> handleAuthenticationWithJwtTokenException() {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ResponseUtils.createErrorResponse(ResponseMessage.AUTHENTICATION_FAILURE));
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorMessage> handleResourceNotFoundException(final ResourceNotFoundException ex) {
-        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, ex.getMessage());
-        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    public ResponseEntity<ApiResponse<String>> handleResourceNotFoundException() {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ResponseUtils.createErrorResponse(ResponseMessage.RECORD_NOT_FOUND));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ApiResponse<HashMap<String, String>>> handleValidationExceptions(MethodArgumentNotValidException exception) {
+        HashMap<String, String> validationErrors = new HashMap<>();
+        exception.getBindingResult().getFieldErrors().forEach(error ->
+            validationErrors.put(error.getField(), error.getDefaultMessage()));
+
+        return ResponseEntity.badRequest().body(ResponseUtils.createValidationErrorResponse(validationErrors));
     }
 
     @ExceptionHandler(AuthorizationDeniedException.class)
-    public ResponseEntity<ErrorMessage> handleAuthorizationDeniedException(AuthorizationDeniedException exception){
-        ErrorMessage message= new ErrorMessage(HttpStatus.FORBIDDEN, exception.getMessage());
-        return new ResponseEntity<>(message, HttpStatus.FORBIDDEN);
+    public ResponseEntity<ApiResponse<String>> handleAuthorizationDeniedException() {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(ResponseUtils.createErrorResponse(ResponseMessage.AUTHORIZATION_FAILURE));
     }
 
+    @ExceptionHandler(RecordAlreadyExistException.class)
+    public ResponseEntity<ApiResponse<String>> handleRecordAlreadyExistException(){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ResponseUtils.createErrorResponse(ResponseMessage.EMAIL_ALREADY_EXISTS));
+    }
+
+    @ExceptionHandler(InvalidEmailTokenException.class)
+    public ResponseEntity<ApiResponse<String>> handleInvalidTokenException() {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ResponseUtils.createErrorResponse(ResponseMessage.INVALID_REQUEST_DATA));
+    }
+
+    @ExceptionHandler(EmailAlreadyVerifiedException.class)
+    public ResponseEntity<ApiResponse<String>> handleEmailAlreadyVerifiedException() {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ResponseUtils.createErrorResponse(ResponseMessage.EMAIL_ALREADY_VERIFIED));
+    }
 
 }
