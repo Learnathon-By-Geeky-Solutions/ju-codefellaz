@@ -2,7 +2,6 @@ package com.skillswaphub.controller.rest;
 
 import com.skillswaphub.domain.dto.UserDTO;
 import com.skillswaphub.domain.common.ApiResponse;
-import com.skillswaphub.domain.enums.ResponseMessage;
 import com.skillswaphub.domain.request.LoginRequest;
 import com.skillswaphub.domain.request.RegisterRequest;
 import com.skillswaphub.domain.response.JwtTokenResponse;
