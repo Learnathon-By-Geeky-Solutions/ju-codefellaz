@@ -15,4 +15,12 @@ public class UserController {
     public String showRegistrationForm() {
         return "registerUsers"; // Returns the registration form page (register.html)
     }
+    @GetMapping("/logIn")
+    public String showLogInForm(){
+        return "loginUsers";
+    }
+    @GetMapping("/dashboard")
+    public String showIndex(){
+        return "index";
+    }
 }
