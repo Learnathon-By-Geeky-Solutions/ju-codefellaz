@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en"
+      layout:decorate="~{layouts/base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<!-- Content block where the page content will be inserted -->
+<div layout:fragment="content">
+    <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="USER">User</option>
+            <option value="ADMIN">Admin</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    <div id="message"></div>
+
+    <!-- Add custom script for registration -->
+    <script src="/js/registerUser.js"></script>
+</div>
+
+</body>
+</html>

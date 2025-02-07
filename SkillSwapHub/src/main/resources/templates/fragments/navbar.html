@@ -1,0 +1,39 @@
+<div th:fragment="navbar">
+    <nav class="navbar bg-white navbar-expand-lg bordered-div">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/navbar-logo.jpg}" alt="SkillSwapHub Logo" width="40" height="45">
+            </a>
+            <a class="navbar-brand" href="#">SkillSwapHub</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                </ul>
+
+                <!-- Search Form -->
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success space-button" type="submit">Search</button>
+                </form>
+
+                <!-- Sign Up/Sign In Links -->
+                <div class="d-flex">
+                    <a th:href="@{/register}" class="btn btn-sm btn-outline-secondary space-button">Sign Up</a>
+                    <a th:href="@{/login}" class="btn btn-sm btn-outline-secondary space-button">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
