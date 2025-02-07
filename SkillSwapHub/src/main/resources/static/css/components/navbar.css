@@ -1,0 +1,59 @@
+/*body {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100vh;*/
+/*    background-color: #f8f9fa;*/
+/*}*/
+.signup-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.signup-form {
+    width: 40%;
+}
+.signup-image {
+    width: 60%;
+}
+.signup-image img {
+    width: 100%;
+}
+.space-button {
+    margin-right: 10px; /* Adds 10px space to the right of the button */
+}
+
+.bg-white{
+    background-color: white;
+
+}
+.bordered-div {
+    border-bottom: 1px solid #1f1f1f;
+}
+.nav-opacity{
+    opacity: 0.5;
+}
+.container-width{
+    width : 65%;
+
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.custom-button {
+    background-color: #73a7a3; /* Custom background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 20px;
+    border-radius: 5px; /* Optional: Rounded corners */
+    cursor: pointer;
+}
+
+.custom-button:hover {
+    background-color: #457c7b; /* Darker color on hover */
+}

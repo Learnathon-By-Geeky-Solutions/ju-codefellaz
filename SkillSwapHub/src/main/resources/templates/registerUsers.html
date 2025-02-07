@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SkillSwapHub</title>
 </head>
 <body>
+<div th:replace="~{fragments/header::header}"></div>
+<div>
 <form id="registrationForm">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
@@ -24,6 +26,7 @@
     <button type="submit">Register</button>
 </form>
 <div id="message"></div>
+</div>
 <script src="/js/registerUser.js"></script>
 </body>
 </html>

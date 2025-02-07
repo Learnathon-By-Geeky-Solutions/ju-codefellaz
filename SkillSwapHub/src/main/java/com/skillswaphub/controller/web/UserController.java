@@ -15,7 +15,7 @@ public class UserController {
     public String showRegistrationForm() {
         return "registerUsers"; // Returns the registration form page (register.html)
     }
-    @GetMapping("/logIn")
+    @GetMapping("/login")
     public String showLogInForm(){
         return "loginUsers";
     }

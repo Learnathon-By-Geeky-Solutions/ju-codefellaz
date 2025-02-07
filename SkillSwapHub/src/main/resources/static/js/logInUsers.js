@@ -26,7 +26,7 @@ async function submitLoginForm(event) {
         document.getElementById("loginMessage").innerHTML = `<p style="color: green;">Login successful!</p>`;
 
         // Redirect to dashboard or homepage after successful login
-        window.location.href = "/dashboard"; // Change the path as per your app
+        // window.location.href = "/dashboard"; // Change the path as per your app
     } catch (error) {
         document.getElementById("loginMessage").innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
     }
