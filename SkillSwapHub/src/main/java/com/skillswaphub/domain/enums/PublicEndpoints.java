@@ -15,7 +15,8 @@ public enum PublicEndpoints {
     VERIFY_EMAIL("/api/auth/verify"),
     CSS("/css/**"),
     JS("/js/**"),
-    VENDOR("/vendor/**");
+    VENDOR("/vendor/**"),
+    IMAGES("/img/**");
 
     private final String path;
 
