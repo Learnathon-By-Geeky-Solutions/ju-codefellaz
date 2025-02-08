@@ -8,11 +8,19 @@ public class UserController {
 
     @GetMapping("/all-users")
     public String getAllUsers() {
-        return "users";
+        return "pages/users";
     }
 
     @GetMapping("/register")
     public String showRegistrationForm() {
-        return "registerUsers"; // Returns the registration form page (register.html)
+        return "pages/registerUsers"; // Returns the registration form page (register.html)
+    }
+    @GetMapping("/login")
+    public String showLogInForm(){
+        return "pages/loginUsers";
+    }
+    @GetMapping("/dashboard")
+    public String showIndex(){
+        return "pages/index";
     }
 }

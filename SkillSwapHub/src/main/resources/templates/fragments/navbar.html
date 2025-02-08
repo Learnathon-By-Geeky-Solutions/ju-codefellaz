@@ -1,0 +1,53 @@
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container-fluid">
+            <!--Logo -->
+            <a class="navbar-brand fw-bold" href="#">
+                <img th:src="@{/img/navbar-logo.jpg}" alt="ssh" width="40" height="45">
+            </a>
+            <a class="navbar-brand" href="#">SkillSwapHub</a>
+
+            <!-- Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Courses</a>
+                    </li>
+                </ul>
+
+                <!-- Search Bar -->
+                <div>
+                    <form class="d-flex flex-grow-1 mx">
+                        <label>
+                            <input class="form-control search-input" type="search" placeholder="Search for anything">
+                        </label>
+                    </form>
+                </div>
+
+                <!-- Right-side Buttons -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Trending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Teach</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-outline-dark " th:href="@{/login}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary text-white mx-2" th:href="@{/register}">Sign up</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Users</title>
+    <script src="/js/fetchData.js"></script>
+    <script src="/js/renderUsers.js"></script>
+    <script>
+        window.onload = renderUsers; // Auto-fetch users on page load
+    </script>
+</head>
+<body>
+<h1>All Users</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="userTable">
+    <!-- Data will be inserted dynamically -->
+    </tbody>
+</table>
+
+<button onclick="renderUsers()">Reload Users</button>
+</body>
+</html>
