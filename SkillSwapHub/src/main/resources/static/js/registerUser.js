@@ -27,7 +27,7 @@ async function submitRegistrationForm(event) {
 
         document.getElementById("message").innerHTML = `<p style="color: green;">User registered successfully!</p>`;
         // Optionally, redirect after successful registration
-        window.location.href = "/logIn"; // Redirect to login page after registration
+        // window.location.href = "/login"; // Redirect to login page after registration
     } catch (error) {
         document.getElementById("message").innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
     }
