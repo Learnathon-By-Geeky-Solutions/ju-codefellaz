@@ -139,7 +139,7 @@ form {
     left: -250%;
     width: 300%;
     height: 100%;
-    background: #74a8ad ;
+    background: rgb(30, 111, 111) ;
     border-radius: 150px;
     z-index:2;
 }
@@ -167,6 +167,18 @@ form {
     background: transparent;
     border: 2px solid #FFFFFF;
     box-shadow: none;
+    font-weight: 700;
+    color:white;
+
+}
+.toggle-panel .btn:hover{
+    width: 160px;
+    height: 46px;
+    background: white;
+    border: 2px solid #FFFFFF;
+    box-shadow: none;
+    font-weight: 700;
+    color: #201414;
 
 }
 
@@ -176,7 +188,7 @@ form {
 /* Navbar Styling */
 .navbar {
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     padding: 15px 50px;
@@ -221,12 +233,12 @@ form {
 }
 
 .btn-primary {
-    background-color: #74a8ad;
-    border-color: #74a8ad;
+    background-color: rgb(30, 111, 111);
+    border-color: rgb(30, 111, 111);
 }
 
 .btn-primary:hover {
-    background-color: #335765;
+    background-color: #7f543d;
 }
 .primary-color{
     background-color: #7f543d;
