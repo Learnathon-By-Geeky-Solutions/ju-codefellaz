@@ -22,7 +22,12 @@ public class RegisterRequest implements Serializable {
     private String name;
 
     @NotNull(message ="Email cannot be null")
-    @Email(message = "Invalid email format")
+    @Email(
+            message = "Invalid email format",
+            regexp = "^[\\w+&*-]+(?:\\.[\\w+&*-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z]{2,})+$"
+
+    )
+    //https://owasp.org/www-community/OWASP_Validation_Regex_Repository
     private String email;
 
     @NotNull(message = "Password cannot be null")
