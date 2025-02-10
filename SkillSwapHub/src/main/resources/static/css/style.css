@@ -254,4 +254,17 @@ form {
 .navbar-nav .nav-link img {
     height: 20px;
 }
+/*message showing*/
+
+#message p {
+    font-size: 14px; /* Default font size */
+    color: red;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+/* Reduce font size when there are multiple error messages */
+#message p:nth-child(n+2) {
+    font-size: 12px;
+}
 
