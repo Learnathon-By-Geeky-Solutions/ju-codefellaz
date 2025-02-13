@@ -43,15 +43,15 @@ function handleValidationErrors(errors) {
     messageBox.innerHTML = ""; // Clear previous messages
 
     for (let key in errors) {
-        let errorMessage = `<p style="color: red;">${errors[key]}</p>`;
+        let errorMessage = `<p class="validation-error">${errors[key]}</p>`;
         messageBox.innerHTML += errorMessage;
     }
 }
 
-// Function to display general messages
+//Function to display general messages
 function showMessage(message, type) {
     const messageDiv = document.getElementById("message");
-    messageDiv.innerHTML = `<p style="color: ${type === "success" ? "green" : "red"}; font-size: 10px;">${message}</p>`;
+    messageDiv.innerHTML = `<p style="color: ${type === "success" ? "#0F5133" : "#84202A"}; font-size: 10px;" class="submission-msg">${message}</p>`;
 }
 
 document.getElementById("registrationForm").addEventListener("submit", submitRegistrationForm);
