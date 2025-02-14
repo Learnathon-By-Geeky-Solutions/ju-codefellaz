@@ -47,6 +47,7 @@
     z-index: 1;
 }
 
+
 form {
     width: 100%;
 }
@@ -182,14 +183,46 @@ form {
     height: 2.8125rem; /* 45px -> 2.8125rem */
 }
 
-.search-input {
-    width: 100%;
-    max-width: 37.5rem; /* 600px -> 37.5rem */
-    min-width: 43.75rem; /* 700px -> 43.75rem */
-    border-radius: 3.125rem; /* 50px -> 3.125rem */
-    padding: 0.75rem 3.125rem 0.75rem 1.25rem; /* 12px 50px 12px 20px -> 0.75rem 3.125rem 0.75rem 1.25rem */
-    font-size: 1rem; /* 16px -> 1rem */
+.search-form {
+    width: 100%; /* Takes full width */
+    max-width: 50%; /* Limits max width */
 }
+
+.search-input {
+    width: 100%; /* Makes it fluid */
+    max-width: 37.5rem; /* Limits max width */
+    min-width: 25rem; /* Prevents too small on small screens */
+    border-radius: 3.125rem; /* Rounded */
+    padding: 0.75rem 3.125rem 0.75rem 1.25rem;
+    font-size: 1rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+    .search-input {
+        min-width: 12rem;
+        padding: 0.5rem 2rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input {
+        min-width: 10rem;
+        padding: 0.5rem 1.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+
+/*.search-input {*/
+/*    width: 100%;*/
+/*    max-width: 100%; !* 600px -> 37.5rem *!*/
+/*    min-width: 70%; !* 700px -> 43.75rem *!*/
+/*    border-radius: 3.125rem; !* 50px -> 3.125rem *!*/
+/*    padding: 0.75rem 3.125rem 0.75rem 1.25rem; !* 12px 50px 12px 20px -> 0.75rem 3.125rem 0.75rem 1.25rem *!*/
+/*    font-size: 1rem; !* 16px -> 1rem *!*/
+/*}*/
 
 /* Footer */
 .footer {
@@ -246,4 +279,35 @@ form {
 }
 
 
+
+/* Toast Notification Styles */
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 6000;
+}
+
+.toast {
+    background-color: #f8d7da; /* Default error color */
+    color: #842029;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Success Style */
+.toast.success {
+    background-color: #d1e7dd; /* Light green */
+    color: #0f5132; /* Dark green */
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
 
