@@ -7,6 +7,8 @@ import com.skillswaphub.domain.request.RegisterRequest;
 import com.skillswaphub.domain.response.JwtTokenResponse;
 import com.skillswaphub.service.UserService;
 import com.skillswaphub.utils.ResponseUtils;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -42,11 +44,22 @@ public class UserRestController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<JwtTokenResponse>> loginUser(@RequestBody LoginRequest user) {
+    public ResponseEntity<ApiResponse<JwtTokenResponse>> loginUser(@RequestBody LoginRequest user, HttpServletResponse response) {
         String verificationResult = userService.verifyUser(user);
-        JwtTokenResponse tokenResponse = new JwtTokenResponse(verificationResult, "Bearer", 86400);
-        ApiResponse<JwtTokenResponse> response = ResponseUtils.createSuccessResponse(tokenResponse);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+
+        // Create and set the cookie
+        Cookie jwtCookie = new Cookie("jwt_token", verificationResult);
+        jwtCookie.setHttpOnly(true); // Prevents JavaScript from accessing the cookie (security best practice)
+        jwtCookie.setSecure(true);   // Only send over HTTPS
+        jwtCookie.setPath("/");      // Available across all endpoints
+        jwtCookie.setMaxAge(24 * 60 * 60); // 1-day expiration
+
+        response.addCookie(jwtCookie);
+
+
+        JwtTokenResponse tokenResponse = new JwtTokenResponse(verificationResult, "COOKIE", 86400);
+        ApiResponse<JwtTokenResponse> responseTo = ResponseUtils.createSuccessResponse(tokenResponse);
+        return new ResponseEntity<>(responseTo, HttpStatus.OK);
     }
 
 }
