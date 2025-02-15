@@ -12,13 +12,16 @@
 <div layout:fragment="content">
     <div class="container">
     <div class="wall">
+        <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
         <div class="container-login-register ">
             <!-- form -->
+
             <div class="form-box register">
                 <form id="registrationForm">
                     <h1>Register</h1>
                     <div id="message" class="alert-message"></div>
-                    <div id="alert-container"></div>
+<!--                    <div id="alert-container"></div>-->
+
                     <div class="input-box">
                         <label for="name"></label>
                         <input type="text" id="name" name="name" placeholder="name" required>
@@ -52,7 +55,7 @@
 
                     <h1>SkillSwapHub</h1>
                     <p>Already a member?</p>
-                    <button class="btn register-btn">Log IN</button>
+                    <button type="button" class="btn register-btn" id="loginBtn">Log IN</button>
                 </div>
             </div>
 
@@ -64,6 +67,8 @@
 </div>
     <!-- Add custom script for registration -->
     <script src="/js/registerUser.js"></script>
+
+
 </div>
 
 </body>

@@ -20,13 +20,16 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 7%;
     background: linear-gradient(90deg, #e2e2e2, #d8f4f6);
 }
 
 .container-login-register {
     position: relative;
-    width: 53.125rem; /* 850px -> 53.125rem */
-    height: 34.375rem; /* 550px -> 34.375rem */
+    width: 66%;
+    height: 80vh;
+    /*max-width: 850px;*/
+    /*max-height: 550px;*/
     background: #fff;
     border-radius: 1.875rem; /* 30px -> 1.875rem */
     box-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.2); /* 30px -> 1.875rem */
@@ -46,6 +49,7 @@
     padding: 2.5rem; /* 40px -> 2.5rem */
     z-index: 1;
 }
+
 
 form {
     width: 100%;
@@ -182,14 +186,46 @@ form {
     height: 2.8125rem; /* 45px -> 2.8125rem */
 }
 
-.search-input {
-    width: 100%;
-    max-width: 37.5rem; /* 600px -> 37.5rem */
-    min-width: 43.75rem; /* 700px -> 43.75rem */
-    border-radius: 3.125rem; /* 50px -> 3.125rem */
-    padding: 0.75rem 3.125rem 0.75rem 1.25rem; /* 12px 50px 12px 20px -> 0.75rem 3.125rem 0.75rem 1.25rem */
-    font-size: 1rem; /* 16px -> 1rem */
+.search-form {
+    width: 100%; /* Takes full width */
+    max-width: 50%; /* Limits max width */
 }
+
+.search-input {
+    width: 100%; /* Makes it fluid */
+    max-width: 37.5rem; /* Limits max width */
+    min-width: 25rem; /* Prevents too small on small screens */
+    border-radius: 3.125rem; /* Rounded */
+    padding: 0.75rem 3.125rem 0.75rem 1.25rem;
+    font-size: 1rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+    .search-input {
+        min-width: 12rem;
+        padding: 0.5rem 2rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input {
+        min-width: 10rem;
+        padding: 0.5rem 1.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+
+/*.search-input {*/
+/*    width: 100%;*/
+/*    max-width: 100%; !* 600px -> 37.5rem *!*/
+/*    min-width: 70%; !* 700px -> 43.75rem *!*/
+/*    border-radius: 3.125rem; !* 50px -> 3.125rem *!*/
+/*    padding: 0.75rem 3.125rem 0.75rem 1.25rem; !* 12px 50px 12px 20px -> 0.75rem 3.125rem 0.75rem 1.25rem *!*/
+/*    font-size: 1rem; !* 16px -> 1rem *!*/
+/*}*/
 
 /* Footer */
 .footer {
@@ -246,4 +282,105 @@ form {
 }
 
 
+
+/* Toast Notification Styles */
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 6000;
+}
+
+.toast {
+    background-color: #f8d7da; /* Default error color */
+    color: #842029;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Success Style */
+.toast.success {
+    background-color: #d1e7dd; /* Light green */
+    color: #0f5132; /* Dark green */
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+
+/* Table Container */
+.table-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+/* User Table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.user-table th, .user-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background: #886451;
+    color: white;
+}
+
+/* Hover Effect */
+.user-table tbody tr:hover {
+    background: #f1f1f1;
+}
+
+/* Buttons */
+.action-btn {
+    padding: 6px 12px;
+    margin: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.edit-btn {
+    background: #1e701a;
+}
+
+.delete-btn {
+    background: #91262e;
+}
+
+/* Reload Button */
+.reload-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #7F543D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reload-btn:hover {
+    background: #201414;
+}
 
