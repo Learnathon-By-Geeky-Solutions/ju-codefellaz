@@ -20,13 +20,16 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 7%;
     background: linear-gradient(90deg, #e2e2e2, #d8f4f6);
 }
 
 .container-login-register {
     position: relative;
-    width: 53.125rem; /* 850px -> 53.125rem */
-    height: 34.375rem; /* 550px -> 34.375rem */
+    width: 66%;
+    height: 80vh;
+    /*max-width: 850px;*/
+    /*max-height: 550px;*/
     background: #fff;
     border-radius: 1.875rem; /* 30px -> 1.875rem */
     box-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.2); /* 30px -> 1.875rem */
@@ -309,5 +312,75 @@ form {
 .toast.show {
     opacity: 1;
     transform: translateX(0);
+}
+
+
+
+
+/* Table Container */
+.table-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+/* User Table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.user-table th, .user-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background: #886451;
+    color: white;
+}
+
+/* Hover Effect */
+.user-table tbody tr:hover {
+    background: #f1f1f1;
+}
+
+/* Buttons */
+.action-btn {
+    padding: 6px 12px;
+    margin: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.edit-btn {
+    background: #1e701a;
+}
+
+.delete-btn {
+    background: #91262e;
+}
+
+/* Reload Button */
+.reload-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #7F543D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reload-btn:hover {
+    background: #201414;
 }
 

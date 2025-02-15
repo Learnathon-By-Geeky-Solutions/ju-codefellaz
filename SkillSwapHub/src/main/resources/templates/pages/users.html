@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en"
+      layout:decorate="~{layouts/base}">
 <head>
     <title>All Users</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to external CSS -->
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>All Users</h1>
+
+    <div class="table-container">
+        <table class="user-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="userTable">
+            <!-- Data will be inserted dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <button class="reload-btn" onclick="renderUsers()">Reload Users</button>
+
     <script src="/js/fetchData.js"></script>
     <script src="/js/renderUsers.js"></script>
     <script>
         window.onload = renderUsers; // Auto-fetch users on page load
     </script>
-</head>
-<body>
-<h1>All Users</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-    </tr>
-    </thead>
-    <tbody id="userTable">
-    <!-- Data will be inserted dynamically -->
-    </tbody>
-</table>
-
-<button onclick="renderUsers()">Reload Users</button>
+</div>
 </body>
 </html>
