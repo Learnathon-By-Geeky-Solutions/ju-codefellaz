@@ -1,38 +1,31 @@
-/*!* Toast Container *!*/
-/*#toast-container {*/
-/*    position: fixed;*/
-/*    top: 20px;*/
-/*    right: 20px;*/
-/*    z-index: 6000;*/
-/*}*/
+/* Toast Notification Styles */
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 6000;
+}
 
-/*!* Toast Message *!*/
-/*.toast {*/
-/*    padding: 10px 20px;*/
-/*    margin-bottom: 10px;*/
-/*    border-radius: 5px;*/
-/*    color: white;*/
-/*    font-size: 14px;*/
-/*    animation: fadeIn 0.5s, fadeOut 0.5s 4.5s forwards;*/
-/*}*/
+.toast {
+    background-color: #f8d7da; /* Default error color */
+    color: #842029;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+}
 
-/*!* Success Toast *!*/
-/*.toast.success {*/
-/*    background-color: #0F5133;*/
-/*}*/
+/* Success Style */
+.toast.success {
+    background-color: #d1e7dd; /* Light green */
+    color: #0f5132; /* Dark green */
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
 
-/*!* Error Toast *!*/
-/*.toast.error {*/
-/*    background-color: #84202A;*/
-/*}*/
-
-/*!* Fade Animations *!*/
-/*@keyframes fadeIn {*/
-/*    from { opacity: 0; transform: translateY(-10px); }*/
-/*    to { opacity: 1; transform: translateY(0); }*/
-/*}*/
-
-/*@keyframes fadeOut {*/
-/*    from { opacity: 1; transform: translateY(0); }*/
-/*    to { opacity: 0; transform: translateY(-10px); }*/
-/*}*/

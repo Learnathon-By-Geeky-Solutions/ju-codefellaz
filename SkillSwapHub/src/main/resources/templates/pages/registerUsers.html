@@ -6,65 +6,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/components/toast.css}">
+    <link rel="stylesheet" th:href="@{/css/components/forms.css}">
 </head>
 <body>
 <!-- Content block where the page content will be inserted -->
 <div layout:fragment="content">
     <div class="container">
-    <div class="wall">
-        <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
-        <div class="container-login-register ">
-            <!-- form -->
+        <div class="wall">
+            <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
+            <div class="container-login-register ">
+                <!-- form -->
+                <div class="form-box register">
+                    <form id="registrationForm">
+                        <h1>Register</h1>
+                        <div class="input-box">
+                            <label for="name"></label>
+                            <input type="text" id="name" name="name" placeholder="name" required>
+                            <i class='bx bxs-user'></i>
+                        </div>
 
-            <div class="form-box register">
-                <form id="registrationForm">
-                    <h1>Register</h1>
-                    <div id="message" class="alert-message"></div>
-<!--                    <div id="alert-container"></div>-->
+                        <div class="input-box">
+                            <label for="email"></label>
+                            <input type="email" id="email" name="email" placeholder="email" required>
+                            <i class='bx bxs-envelope'></i>
+                        </div>
+                        <div class="input-box">
+                            <label for="password"></label>
+                            <input type="password" id="password" name="password" placeholder="password" required>
+                            <i class='bx bxs-lock-alt'></i>
+                        </div>
+                        <div class="select-box">
+                            <label for="role"></label>
+                            <select id="role" name="role" required>
+                                <option value="USER">User</option>
+                                <option value="ADMIN">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit btn-primary">Register</button>
+                    </form>
 
-                    <div class="input-box">
-                        <label for="name"></label>
-                        <input type="text" id="name" name="name" placeholder="name" required>
-                        <i class='bx bxs-user'></i>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="email"></label>
-                        <input type="email" id="email" name="email" placeholder="email" required>
-                        <i class='bx bxs-envelope'></i>
-                    </div>
-                    <div class="input-box">
-                        <label for="password"></label>
-                        <input type="password" id="password" name="password" placeholder="password" required>
-                        <i class='bx bxs-lock-alt'></i>
-                    </div>
-                    <div class="select-box">
-                        <label for="role"></label>
-                        <select id="role" name="role" required>
-                            <option value="USER">User</option>
-                            <option value="ADMIN">Admin</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-submit btn-primary">Register</button>
-                </form>
-
-            </div>
-
-            <div class="toggle-box">
-                <div class="toggle-panel toggle-right">
-
-                    <h1>SkillSwapHub</h1>
-                    <p>Already a member?</p>
-                    <button type="button" class="btn register-btn" id="loginBtn">Log IN</button>
                 </div>
-            </div>
 
+                <div class="toggle-box">
+                    <div class="toggle-panel toggle-right">
+
+                        <h1>SkillSwapHub</h1>
+                        <p>Already a member?</p>
+                        <button type="button" class="btn register-btn" id="loginBtn">Log IN</button>
+                    </div>
+                </div>
+
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
     <!-- Add custom script for registration -->
     <script src="/js/registerUser.js"></script>
 
