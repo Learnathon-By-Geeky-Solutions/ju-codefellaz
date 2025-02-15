@@ -1,4 +1,20 @@
 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en"
+      layout:decorate="~{layouts/base}">
+<head>
+    <meta charset="UTF-8">
+    <title>SkillSwapHub</title>
+
+
+    <link rel="stylesheet" th:href="@{/css/components/buttons.css}">
+
+    <link rel="stylesheet" th:href="@{/css/components/footer.css}">
+
+</head>
+<body>
 
 <div th:fragment="footer" class=" footer text-center mt-5">
 
@@ -11,8 +27,6 @@
                 <h4 class="text-white mb-3">Quick Link</h4>
                 <p><a class="text-light"  th:href="@{/about}">About Us</a></p>
                 <p><a class="text-light" th:href="@{/contact}">Contact Us</a></p>
-                <p><a class="text-light" href="">Privacy Policy</a></p>
-                <p><a class="text-light" href="">Terms & Condition</a></p>
                 <p><a class="text-light" th:href="@{/faq}">FAQs & Help</a></p>
             </div>
             <div class="col-lg-4 col-md-6">
@@ -20,12 +34,7 @@
 
                 <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+8801791594313</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>skillswaphub@gmail.com</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                </div>
+
             </div>
 
             <div class="col-lg-4 col-md-6">
