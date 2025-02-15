@@ -1,0 +1,32 @@
+/* Table Container */
+.table-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+/*ALL-User Table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.user-table th, .user-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background: #886451;
+    color: white;
+}
+
+/* Hover Effect */
+.user-table tbody tr:hover {
+    background: #f1f1f1;
+}

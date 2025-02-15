@@ -1,0 +1,12 @@
+/* Footer */
+.footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 0.625rem 0; /* 10px -> 0.625rem */
+    flex: 1;
+}
