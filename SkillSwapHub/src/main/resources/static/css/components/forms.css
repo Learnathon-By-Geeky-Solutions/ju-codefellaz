@@ -1,0 +1,18 @@
+.form-box {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: rgb(254, 254, 254);
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-align: center;
+    padding: 2.5rem; /* 40px -> 2.5rem */
+    z-index: 1;
+}
+
+
+form {
+    width: 100%;
+}

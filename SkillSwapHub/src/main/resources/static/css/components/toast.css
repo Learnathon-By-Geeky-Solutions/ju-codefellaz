@@ -1,0 +1,31 @@
+/* Toast Notification Styles */
+#toast-container {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 6000;
+}
+
+.toast {
+    background-color: #f8d7da; /* Default error color */
+    color: #842029;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Success Style */
+.toast.success {
+    background-color: #d1e7dd; /* Light green */
+    color: #0f5132; /* Dark green */
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+

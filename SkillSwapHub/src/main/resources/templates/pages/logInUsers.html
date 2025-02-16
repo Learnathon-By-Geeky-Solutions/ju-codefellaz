@@ -6,11 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/components/toast.css}">
+    <link rel="stylesheet" th:href="@{/css/components/forms.css}">
 </head>
 <body>
 <div layout:fragment="content">
     <div class="container">
         <div class="wall">
+            <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3"></div>
             <!-- Login and Register Section -->
             <div class="container-login-register">
                 <div class="form-box login">
@@ -36,7 +39,7 @@
                     <div class="toggle-panel toggle-left">
                         <h1>Hello, Welcome!</h1>
                         <p>Don't have an account?</p>
-                        <button class="btn register-btn">Register</button>
+                        <button type="submit" class="btn register-btn">Register</button>
                     </div>
                 </div>
 
